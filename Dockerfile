@@ -1,3 +1,4 @@
+ARG BUILDPLATFORM=linux/amd64
 ARG BASE_IMAGE=docker.io/library/ubuntu:22.04
 ####################################################################################################
 # Builder image
