@@ -788,7 +788,7 @@ func (a *ArgoCDServer) translateGrpcCookieHeader(ctx context.Context, w http.Res
 
 func (a *ArgoCDServer) setTokenCookie(token string, w http.ResponseWriter) error {
 	cookiePath := fmt.Sprintf("path=/%s", strings.TrimRight(strings.TrimLeft(a.ArgoCDServerOpts.BaseHRef, "/"), "/"))
-	flags := []string{cookiePath, "SameSite=lax", "httpOnly"}
+	flags := []string{cookiePath, "SameSite=None", "httpOnly"}
 	if !a.Insecure {
 		flags = append(flags, "Secure")
 	}
