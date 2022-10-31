@@ -844,4 +844,22 @@ Are you sure you want to disable auto-sync and rollback application '${this.prop
     private async deleteApplication() {
         await AppUtils.deleteApplication(this.props.match.params.name, this.appNamespace, this.appContext.apis);
     }
+
+    public async componentDidMount() {
+        const docHeight = document.documentElement.scrollHeight || document.body.scrollHeight;
+        const docWidth = document.documentElement.scrollWidth || document.body.scrollWidth;
+        parent?.postMessage('renderDone', JSON.stringify({
+            docHeight,
+            docWidth
+        }))
+        window.addEventListener('message', function(data){
+            if(data.action === 'hight') {
+                (document.querySelector('.sidebar') as HTMLElement).style.display = 'none';
+                (document.querySelector('.page__top-bar') as HTMLElement).style.display = 'none';
+                (document.querySelector('.application-details__status-panel') as HTMLElement).style.display = 'none';
+                (document.querySelector('.application-details__tree') as HTMLElement).style.margin = '0';
+                (document.querySelector('.sb-page-wrapper') as HTMLElement).style.padding = '0';
+            }
+         })
+      }
 }
