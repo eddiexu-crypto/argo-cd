@@ -1,7 +1,7 @@
 [![Integration tests](https://github.com/argoproj/argo-cd/workflows/Integration%20tests/badge.svg?branch=master)](https://github.com/argoproj/argo-cd/actions?query=workflow%3A%22Integration+tests%22) [![slack](https://img.shields.io/badge/slack-argoproj-brightgreen.svg?logo=slack)](https://argoproj.github.io/community/join-slack) [![codecov](https://codecov.io/gh/argoproj/argo-cd/branch/master/graph/badge.svg)](https://codecov.io/gh/argoproj/argo-cd) [![Release Version](https://img.shields.io/github/v/release/argoproj/argo-cd?label=argo-cd)](https://github.com/argoproj/argo-cd/releases/latest) [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/4486/badge)](https://bestpractices.coreinfrastructure.org/projects/4486) [![Twitter Follow](https://img.shields.io/twitter/follow/argoproj?style=social)](https://twitter.com/argoproj)
 [![Artifact HUB](https://img.shields.io/endpoint?url=https://artifacthub.io/badge/repository/argo-cd)](https://artifacthub.io/packages/helm/argo/argo-cd)
 
-[![Raptor](https://raptor-api.mcointernal.com/raptor/api/v1/badge?code=MP1001&env=asta)](https://raptor.mcointernal.com/#/detail/crypto_application_62c6906f297c8e03/asta)
+[![Raptor](https://ttdev-raptor-api.3ona.co/raptor/api/v1/badge?code=CP1002&env=adev)](https://ttdev-raptor.3ona.co/#/detail/crypto_application_62cb7e6974da949b/adev)
 # Argo CD - Declarative Continuous Delivery for Kubernetes
 
 ## What is Argo CD?
