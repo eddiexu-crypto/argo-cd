@@ -856,10 +856,10 @@ Are you sure you want to disable auto-sync and rollback application '${this.prop
             console.debug('message', event.data);
             if(event.data === 'hide') {
                 (document.querySelector('.sidebar') as HTMLElement).style.display = 'none';
-                (document.querySelector('.page__top-bar') as HTMLElement).style.display = 'none';
-                (document.querySelector('.application-details__status-panel') as HTMLElement).style.display = 'none';
-                (document.querySelector('.application-details__tree') as HTMLElement).style.margin = '0';
-                (document.querySelector('.sb-page-wrapper') as HTMLElement).style.padding = '0';
+                (document.querySelector('.page__top-bar') as HTMLElement).style.left = '0';
+                (document.querySelector('.page__top-bar .top-bar') as HTMLElement).style.visibility = 'hidden';
+                (document.querySelector('.sb-page-wrapper') as HTMLElement).style.paddingLeft = '0';
+                (document.querySelector('.application-details__status-panel') as HTMLElement).style.left = '0';
             }
          })
       }
