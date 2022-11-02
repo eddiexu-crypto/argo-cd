@@ -848,12 +848,13 @@ Are you sure you want to disable auto-sync and rollback application '${this.prop
     public async componentDidMount() {
         const docHeight = document.documentElement.scrollHeight || document.body.scrollHeight;
         const docWidth = document.documentElement.scrollWidth || document.body.scrollWidth;
-        parent?.postMessage('renderDone', JSON.stringify({
+        parent?.postMessage({ action: 'renderDone', data: {
             docHeight,
             docWidth
-        }))
-        window.addEventListener('message', function(data){
-            if(data.action === 'hight') {
+        }}, '*');
+        window.addEventListener('message', function(event){
+            console.debug('message', event.data);
+            if(event.data === 'hide') {
                 (document.querySelector('.sidebar') as HTMLElement).style.display = 'none';
                 (document.querySelector('.page__top-bar') as HTMLElement).style.display = 'none';
                 (document.querySelector('.application-details__status-panel') as HTMLElement).style.display = 'none';
