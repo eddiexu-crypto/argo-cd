@@ -855,12 +855,18 @@ Are you sure you want to disable auto-sync and rollback application '${this.prop
         window.addEventListener('message', function(event){
             console.debug('message', event.data);
             if(event.data === 'hide') {
-                (document.querySelector('.sidebar') as HTMLElement).style.display = 'none';
-                (document.querySelector('.page__top-bar') as HTMLElement).style.left = '0';
-                (document.querySelector('.page__top-bar .top-bar') as HTMLElement).style.visibility = 'hidden';
-                (document.querySelector('.sb-page-wrapper') as HTMLElement).style.paddingLeft = '0';
-                (document.querySelector('.application-details__status-panel') as HTMLElement).style.left = '0';
+                try {
+                    (document.querySelector('.sidebar') as HTMLElement).style.display = 'none';
+                    (document.querySelector('.page__top-bar') as HTMLElement).style.left = '0';
+                    (document.querySelector('.page__top-bar .top-bar') as HTMLElement).style.display = 'none';
+                    (document.querySelector('.sb-page-wrapper') as HTMLElement).style.paddingLeft = '0';
+                    (document.querySelector('.application-details__status-panel') as HTMLElement).style.left = '0';
+                    (document.querySelector('.page.page--has-toolbar') as HTMLElement).style.paddingTop = '50px';
+                } catch(err) {
+                    parent?.postMessage({ action: 'failToHide' }, '*');
+                }
             }
          })
       }
 }
+                    
