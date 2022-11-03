@@ -863,6 +863,7 @@ Are you sure you want to disable auto-sync and rollback application '${this.prop
                     (document.querySelector('.application-details__status-panel') as HTMLElement).style.left = '0';
                     (document.querySelector('.page.page--has-toolbar') as HTMLElement).style.paddingTop = '50px';
                 } catch(err) {
+                    console.debug(err);
                     parent?.postMessage({ action: 'failToHide' }, '*');
                 }
             }
