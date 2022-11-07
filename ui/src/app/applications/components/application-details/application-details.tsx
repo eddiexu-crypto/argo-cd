@@ -852,22 +852,41 @@ Are you sure you want to disable auto-sync and rollback application '${this.prop
             docHeight,
             docWidth
         }}, '*');
+        function changeStyle(index, identify, handle) {
+            try {
+                const dom = document.querySelector(identify);
+                dom.style[handle.key] = handle.val;
+            } catch(err) {
+                console.debug('fail to exec', identify, handle)
+                return ''
+            }
+            return identify
+        }
         window.addEventListener('message', function(event){
             console.debug('message', event.data);
-            if(event.data === 'hide') {
-                try {
-                    (document.querySelector('.sidebar') as HTMLElement).style.display = 'none';
-                    (document.querySelector('.page__top-bar') as HTMLElement).style.left = '0';
-                    (document.querySelector('.page__top-bar .top-bar') as HTMLElement).style.display = 'none';
-                    (document.querySelector('.sb-page-wrapper') as HTMLElement).style.paddingLeft = '0';
-                    (document.querySelector('.application-details__status-panel') as HTMLElement).style.left = '0';
-                    (document.querySelector('.page.page--has-toolbar') as HTMLElement).style.paddingTop = '50px';
-                } catch(err) {
-                    console.debug(err);
-                    parent?.postMessage({ action: 'failToHide' }, '*');
+            let handleList = [
+                ['.sidebar', { key: 'display', val: 'none' }],
+                ['.page__top-bar', { key: 'left', val: '0' }],
+                ['.page__top-bar .top-bar', { key: 'display', val: 'none' }],
+                ['.application-details__status-panel', { key: 'left', val: '0' }],
+                ['.page.page--has-toolbar', { key: 'paddingTop', val: '50px' }],
+                ['.sb-page-wrapper', { key: 'paddingLeft', val: '0' }],
+                ['.sb-page-wrapper__sidebar-collapsed', { key: 'paddingLeft', val: '0' }],
+            ];
+            if(event.data !== 'hide') return;
+            
+            for(let i = 0; i < handleList.length; i++) {
+                const key = changeStyle(i, ...handleList[i]);
+                if (key) {
+                    handleList[i] = undefined;
                 }
+            }
+            handleList = handleList.filter(item => item !== undefined);
+
+            if (handleList.length > 1) {
+                parent?.postMessage({ action: 'failToHide' }, '*');
             }
          })
       }
 }
-                    
+
